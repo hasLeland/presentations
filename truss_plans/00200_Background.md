@@ -1,7 +1,11 @@
 
 # Background
 
-- `go-kit` has the greatest mindshare of Go toolkits for building microservices
-- Offers lots of options, requiring lots of code
+- `go-kit` has the greatest language-wide mindshare of Go toolkits for building microservices
+	- Used within TuneLab
+	- Lots of functionality, lots of boilerplate
+- Swagger/OpenAPI used elsewhere within Tune
+	- Ultra-useful code generation
+	- Automatic API explorer
 
 
