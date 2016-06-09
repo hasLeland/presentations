@@ -15,27 +15,31 @@ font-size: 70px;
 
 # HTTP Annotations example
 
-	::protobuf hl_lines="3 4 5"
+	::protobuf hl_lines="1 5 7 8 15 16 21 23 24"
+	import "google/api/annotations.proto";
+
 	service CurrencyExchangeService {
+
+  		/// Return a particular exchange rate for a currency
 		rpc ExchangeRateGetRate(ExchangeRateGetRateRequest) returns (ExchangeRateGetRateResponse) {
 			option (google.api.http) = {
-				get: "/v1/rate"
+				get: "/rate/{from_currency}/{to_currency}"
 			};
 		}
+
+  		/// Convert an amount in one currency to another at an exchange rate
 		rpc ExchangeRateConvert(ExchangeRateConvertRequest) returns (ExchangeRateConvertResponse) {
 			option (google.api.http) = {
-				get: "/v1/convert"
-			};
-		}
-		rpc Status(StatusRequest) returns (StatusResponse) {
-			option (google.api.http) = {
-				get: "/v1/status"
-			};
-		}
-		rpc Ping(PingRequest) returns (PingResponse) {
-			option (google.api.http) = {
-				get: "/v1/ping"
+				post: "/convert"
+				body: "rate"
 			};
 		}
 	}
+
+	/// Input request for ExchangeRateGetRate rpc method of CurrencyExchangeService
+	message ExchangeRateGetRateRequest {
+	  /// Input currency type
+	  /// Must be ISO 4217 3 letter currency code
+	  string from_currency = 1;
+	  ...
 
