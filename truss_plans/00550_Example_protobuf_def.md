@@ -15,7 +15,7 @@ font-size: 70px;
 
 # HTTP Annotations example
 
-	#!protobuf
+	::protobuf hl_lines="3 4 5"
 	service CurrencyExchangeService {
 		rpc ExchangeRateGetRate(ExchangeRateGetRateRequest) returns (ExchangeRateGetRateResponse) {
 			option (google.api.http) = {
